@@ -1,0 +1,94 @@
+{
+  "id": "omni_room",
+  "name": "Omni Room Management System",
+  "status": "ONLINE",
+  "activeVersion": "v1.0.0",
+  "versions": {
+    "v1.0.0": {
+      "releaseDate": "2026-03-01",
+      "changelog": "Initial rollout of custom PTZ camera assembly, local Ollama summary engine, and local face verification pipeline."
+    }
+  },
+  "connections": ["python", "react", "nodejs", "mysql", "opencv", "hog", "cnn", "ollama", "rpi4"],
+  "spec": {
+    "overview": "An AI-powered smart classroom management system featuring custom-built PTZ cameras, localized face verification pipelines, and automated learning analytics driven by local offline LLMs.",
+    "architecture": "Features custom Sony IMX sensor hardware modules on Raspberry Pi 4 running edge vision pipeline, streaming coordinates to server, and local Ollama server running Llama-3 for audio transcription analysis.",
+    "subsystems": [
+      {
+        "id": "omni_frontend",
+        "name": "Dashboard Interface",
+        "function": "React UI rendering class statistics, summary sheets, and interactive student registry.",
+        "technologies": ["react"]
+      },
+      {
+        "id": "omni_backend",
+        "name": "Class API Server",
+        "function": "Node.js service coordinating live camera streams and transcribing class audio.",
+        "technologies": ["nodejs"]
+      },
+      {
+        "id": "omni_database",
+        "name": "Relational Registry",
+        "function": "MySQL database archiving student vectors and transcription models.",
+        "technologies": ["mysql"]
+      },
+      {
+        "id": "omni_hardware",
+        "name": "PTZ Edge Hardware",
+        "function": "Servo motor brackets and Sony IMX sensor assembly running on Raspberry Pi 4.",
+        "technologies": ["rpi4"]
+      },
+      {
+        "id": "omni_vision",
+        "name": "Edge Classifier",
+        "function": "Rapid attendance verification pipeline utilizing OpenCV, HOG, and CNN bounds check.",
+        "technologies": ["opencv", "hog", "cnn"]
+      },
+      {
+        "id": "omni_llm",
+        "name": "Echo Minds Offline LLM",
+        "function": "Ollama engine running local quantized Llama-3 weights to extract study notes.",
+        "technologies": ["ollama"]
+      }
+    ],
+    "challenges": "Running Ollama and OpenCV on Raspberry Pi 4 simultaneously caused severe RAM exhaustion.",
+    "engineeringDecisions": "Constructed client-side threshold check triggering face CNN classifier only when a candidate enters viewport bounds.",
+    "lessonsLearned": "4-bit quantized GGUF weights are necessary for reliable edge LLM inference loops.",
+    "futureImprovements": "Compile OpenCV pipelines to WebAssembly modules to support thin browser streaming clients.",
+    "interviewQuestions": [
+      {
+        "q": "How did you optimize memory usage on Raspberry Pi 4 when running Ollama and OpenCV simultaneously?",
+        "a": "Lowered camera input frames resolution to 640x480 grayscale, and loaded strict 3B parameter model files restricted to 2GB cache bounds."
+      }
+    ]
+  },
+  "replay": [
+    {
+      "stage": 1,
+      "title": "PTZ Assembly & Shell Setup",
+      "description": "Configured servo drivers on Raspberry Pi and assembled 3D printed camera bracket.",
+      "decisions": "Selected Raspberry Pi 4 with custom Sony IMX camera for high sensitivity in low-light classrooms.",
+      "challenges": "Servo jittering due to software PWM timing errors.",
+      "lessons": "Utilized hardware-level clock timing libraries (pigpio) to achieve steady 50Hz control cycles.",
+      "technologies": ["rpi4", "servo_motors", "sony_imx"]
+    },
+    {
+      "stage": 2,
+      "title": "Edge Facial Verification",
+      "description": "Developed localized feature extraction pipelines with HOG and CNN model models.",
+      "decisions": "Created dynamic threshold triggers to execute CNN validation on movement only.",
+      "challenges": "High false positive classification in low light conditions.",
+      "lessons": "Preprocessing frames with adaptive histogram equalization (CLAHE) reduced ambient light bias.",
+      "technologies": ["opencv", "hog", "cnn"]
+    },
+    {
+      "stage": 3,
+      "title": "Quantized LLM Note Compiler",
+      "description": "Integrated local Ollama server running quantized Llama-3 model for lecture audio analytics.",
+      "decisions": "Fitted 3B quantized parameter weights restricted to 2GB memory capacity limits.",
+      "challenges": "High prompt execution latency (10+ seconds per answer).",
+      "lessons": "Pre-segmenting raw transcripts and chunking inputs kept responses below 2 seconds.",
+      "technologies": ["ollama"]
+    }
+  ]
+}

@@ -1,0 +1,282 @@
+{
+  "python": {
+    "id": "python",
+    "name": "Python",
+    "category": "Languages",
+    "documentation": "https://www.python.org",
+    "interviewQuestions": [
+      {
+        "q": "What is the difference between multiprocessing and multithreading in Python?",
+        "a": "Due to the Global Interpreter Lock (GIL), multithreading is suitable for I/O-bound tasks, while multiprocessing bypasses the GIL for CPU-bound computation by spawning independent processes."
+      }
+    ]
+  },
+  "react": {
+    "id": "react",
+    "name": "React",
+    "category": "Frontend",
+    "documentation": "https://react.dev",
+    "interviewQuestions": [
+      {
+        "q": "How does React Fiber architecture schedule work?",
+        "a": "Fiber separates reconciliation from commit phases, utilizing requestIdleCallback to split rendering into chunks."
+      }
+    ]
+  },
+  "nodejs": {
+    "id": "nodejs",
+    "name": "Node.js",
+    "category": "Backend",
+    "documentation": "https://nodejs.org",
+    "interviewQuestions": [
+      {
+        "q": "What is the event loop in Node.js?",
+        "a": "The event loop manages asynchronous callbacks, executing tasks through phases (timers, I/O callbacks, poll, check, close callbacks) backed by a thread pool for system tasks."
+      }
+    ]
+  },
+  "mysql": {
+    "id": "mysql",
+    "name": "MySQL",
+    "category": "Databases",
+    "documentation": "https://www.mysql.com",
+    "interviewQuestions": [
+      {
+        "q": "How do indexes optimize query speeds, and what is their cost?",
+        "a": "Indexes use B+ Trees to allow logarithmic lookup speeds, but increase memory footprint and slow down write/update queries."
+      }
+    ]
+  },
+  "opencv": {
+    "id": "opencv",
+    "name": "OpenCV",
+    "category": "AI / ML Core",
+    "documentation": "https://opencv.org"
+  },
+  "hog": {
+    "id": "hog",
+    "name": "HOG Feature Extraction",
+    "category": "AI / ML Core"
+  },
+  "cnn": {
+    "id": "cnn",
+    "name": "CNN Models",
+    "category": "AI / ML Core"
+  },
+  "ollama": {
+    "id": "ollama",
+    "name": "Ollama LLM",
+    "category": "Generative AI",
+    "documentation": "https://ollama.com"
+  },
+  "rpi4": {
+    "id": "rpi4",
+    "name": "Raspberry Pi 4",
+    "category": "Hardware",
+    "documentation": "https://www.raspberrypi.com"
+  },
+  "typescript": {
+    "id": "typescript",
+    "name": "TypeScript",
+    "category": "Languages",
+    "documentation": "https://www.typescriptlang.org"
+  },
+  "razorpay": {
+    "id": "razorpay",
+    "name": "Razorpay Gateway",
+    "category": "Integrations"
+  },
+  "hostinger": {
+    "id": "hostinger",
+    "name": "Hostinger VPS",
+    "category": "DevOps"
+  },
+  "fastapi": {
+    "id": "fastapi",
+    "name": "FastAPI",
+    "category": "Backend",
+    "documentation": "https://fastapi.tiangolo.com"
+  },
+  "groq": {
+    "id": "groq",
+    "name": "Groq LLM",
+    "category": "Generative AI"
+  },
+  "python_docx": {
+    "id": "python_docx",
+    "name": "python-docx",
+    "category": "Backend"
+  },
+  "pydantic": {
+    "id": "pydantic",
+    "name": "Pydantic",
+    "category": "Backend"
+  },
+  "scikit_learn": {
+    "id": "scikit_learn",
+    "name": "Scikit-learn",
+    "category": "AI / ML Core",
+    "documentation": "https://scikit-learn.org"
+  },
+  "pandas": {
+    "id": "pandas",
+    "name": "Pandas",
+    "category": "Data & DB"
+  },
+  "edge_ml": {
+    "id": "edge_ml",
+    "name": "Edge ML Inference",
+    "category": "AI / ML Core"
+  },
+  "machine_learning": {
+    "id": "machine_learning",
+    "name": "Machine Learning",
+    "category": "AI / ML Core"
+  },
+  "deep_learning": {
+    "id": "deep_learning",
+    "name": "Deep Learning",
+    "category": "AI / ML Core"
+  },
+  "computer_vision": {
+    "id": "computer_vision",
+    "name": "Computer Vision",
+    "category": "AI / ML Core"
+  },
+  "deepface": {
+    "id": "deepface",
+    "name": "DeepFace",
+    "category": "AI / ML Core"
+  },
+  "face_recognition": {
+    "id": "face_recognition",
+    "name": "Face Recognition",
+    "category": "AI / ML Core"
+  },
+  "prompt_engineering": {
+    "id": "prompt_engineering",
+    "name": "Prompt Engineering",
+    "category": "Generative AI"
+  },
+  "few_shot": {
+    "id": "few_shot",
+    "name": "Few-Shot Learning",
+    "category": "Generative AI"
+  },
+  "chain_of_thought": {
+    "id": "chain_of_thought",
+    "name": "Chain of Thought",
+    "category": "Generative AI"
+  },
+  "llm_inference": {
+    "id": "llm_inference",
+    "name": "LLM Inference",
+    "category": "Generative AI"
+  },
+  "agentic_ai": {
+    "id": "agentic_ai",
+    "name": "Agentic AI",
+    "category": "Generative AI"
+  },
+  "rest_apis": {
+    "id": "rest_apis",
+    "name": "REST APIs",
+    "category": "Backend"
+  },
+  "html": {
+    "id": "html",
+    "name": "HTML5",
+    "category": "Frontend"
+  },
+  "css": {
+    "id": "css",
+    "name": "CSS3 / Styles",
+    "category": "Frontend"
+  },
+  "prisma": {
+    "id": "prisma",
+    "name": "Prisma ORM",
+    "category": "Backend",
+    "documentation": "https://www.prisma.io"
+  },
+  "auth": {
+    "id": "auth",
+    "name": "Authentication (OAuth / JWT)",
+    "category": "Backend"
+  },
+  "sql": {
+    "id": "sql",
+    "name": "SQL Databases",
+    "category": "Data & DB"
+  },
+  "feature_engineering": {
+    "id": "feature_engineering",
+    "name": "Feature Engineering",
+    "category": "Data & DB"
+  },
+  "arduino_mega": {
+    "id": "arduino_mega",
+    "name": "Arduino Mega",
+    "category": "Hardware"
+  },
+  "servo_motors": {
+    "id": "servo_motors",
+    "name": "Servo Motors",
+    "category": "Hardware"
+  },
+  "sony_imx": {
+    "id": "sony_imx",
+    "name": "Sony IMX Sensor",
+    "category": "Hardware"
+  },
+  "ptz_assembly": {
+    "id": "ptz_assembly",
+    "name": "PTZ Assembly",
+    "category": "Hardware"
+  },
+  "kicad": {
+    "id": "kicad",
+    "name": "KiCad PCB Design",
+    "category": "Hardware"
+  },
+  "embedded_c": {
+    "id": "embedded_c",
+    "name": "Embedded C",
+    "category": "Hardware"
+  },
+  "git": {
+    "id": "git",
+    "name": "Git",
+    "category": "DevOps"
+  },
+  "github": {
+    "id": "github",
+    "name": "GitHub",
+    "category": "DevOps"
+  },
+  "ci_cd": {
+    "id": "ci_cd",
+    "name": "CI/CD Pipelines",
+    "category": "DevOps"
+  },
+  "linux": {
+    "id": "linux",
+    "name": "Linux OS",
+    "category": "DevOps"
+  },
+  "shell_scripting": {
+    "id": "shell_scripting",
+    "name": "Shell Scripting",
+    "category": "DevOps"
+  },
+  "deployment": {
+    "id": "deployment",
+    "name": "Deployment",
+    "category": "DevOps"
+  },
+  "google_oauth": {
+    "id": "google_oauth",
+    "name": "Google OAuth",
+    "category": "Integrations"
+  }
+}

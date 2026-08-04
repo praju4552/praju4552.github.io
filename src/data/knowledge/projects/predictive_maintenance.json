@@ -1,0 +1,73 @@
+{
+  "id": "predictive_maintenance",
+  "name": "Predictive Maintenance — IIoT",
+  "status": "ONLINE",
+  "activeVersion": "v1.0.0",
+  "versions": {
+    "v1.0.0": {
+      "releaseDate": "2025-11-10",
+      "changelog": "Initial model training and local inference pipeline deployment."
+    }
+  },
+  "connections": ["python", "scikit_learn", "pandas", "edge_ml", "machine_learning"],
+  "spec": {
+    "overview": "An edge-deployed machine learning system performing real-time anomaly detection and predictive maintenance on motor vibration and temperature sensors.",
+    "architecture": "Utilizes a Python-based preprocessing and feature engineering pipeline, classical ML classifiers trained offline, and lightweight local inference engines deployed without cloud reliance.",
+    "subsystems": [
+      {
+        "name": "Preprocessing Pipeline",
+        "function": "Extracts statistical feature sets (mean, RMS, kurtosis) from raw sensor streams using sliding windows.",
+        "technologies": ["python", "pandas"]
+      },
+      {
+        "name": "ML Inference Core",
+        "function": "Classifies motor status as normal, alert, or critical using optimized Random Forest estimators.",
+        "technologies": ["scikit_learn", "machine_learning"]
+      },
+      {
+        "name": "Edge Deploy Node",
+        "function": "Runs local anomaly validation cycles directly on sensor controller boards, bypassing network delays.",
+        "technologies": ["edge_ml"]
+      }
+    ],
+    "challenges": "Faced severe memory and processor limits when attempting to compute FFT frequency conversions on local edge microcontrollers.",
+    "engineeringDecisions": "Shifted anomaly features from frequency domains to time domains (root-mean-square and peak-to-peak amplitude metrics), achieving 88% precision with a 90% reduction in CPU cycles.",
+    "lessonsLearned": "Offline model training must replicate the specific coordinate limits and noise characteristics of real-world physical sensors.",
+    "futureImprovements": "Port model weights into C headers using micro-tensor toolkits to support ultra-low-power microcontrollers.",
+    "interviewQuestions": [
+      {
+        "q": "Why did you choose classical ML over Deep Learning (like LSTM) for anomaly detection?",
+        "a": "Deep learning models require high memory capacities and floating-point acceleration. Classical Random Forest models achieved 88% precision while using less than 50KB of memory, which fits directly on edge microcontrollers without network delays."
+      }
+    ]
+  },
+  "replay": [
+    {
+      "stage": 1,
+      "title": "Data Pipeline Engineering",
+      "description": "Cleaned noisy sensor data streams and built coordinate sliding window systems.",
+      "decisions": "Used pandas to handle large test CSV matrices offline before porting equations.",
+      "challenges": "Irregular sampling rates from raw hardware sensors.",
+      "lessons": "Resampling sensor readings to a fixed frequency grid prevents model prediction biases.",
+      "technologies": ["python", "pandas"]
+    },
+    {
+      "stage": 2,
+      "title": "Model Training & Tuning",
+      "description": "Trained and evaluated classical ML models on vibration and heat targets.",
+      "decisions": "Selected Random Forest classifier over SVM due to better threshold control capabilities.",
+      "challenges": "Severe class imbalance (anomalies represent only 2% of raw data).",
+      "lessons": "Using synthetic oversampling techniques (SMOTE) balanced precision and recall scores.",
+      "technologies": ["python", "scikit_learn", "machine_learning"]
+    },
+    {
+      "stage": 3,
+      "title": "Edge Inference Porting",
+      "description": "Exported model weight arrays into optimized edge Python routines.",
+      "decisions": "Implemented inference using pure numpy logic to avoid importing heavy scikit-learn libraries.",
+      "challenges": "Throttled clock speeds on edge microcontrollers.",
+      "lessons": "Pre-computing math constants speeds up real-time sensor predictions.",
+      "technologies": ["python", "edge_ml"]
+    }
+  ]
+}

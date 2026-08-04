@@ -1,0 +1,11 @@
+{
+  "name": "Prajwal A",
+  "role": "AI Systems Builder & Full Stack Developer",
+  "location": "Bengaluru, India",
+  "metrics": [
+    { "label": "Live Production System", "value": "01" },
+    { "label": "Months Uptime", "value": "4+" },
+    { "label": "Production Commits", "value": "100+" },
+    { "label": "ML Models Benchmarked", "value": "05" }
+  ]
+}

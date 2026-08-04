@@ -1,0 +1,73 @@
+{
+  "id": "fluid_ai",
+  "name": "Fluid AI — Autonomous Agent",
+  "status": "ONLINE",
+  "activeVersion": "v1.0.0",
+  "versions": {
+    "v1.0.0": {
+      "releaseDate": "2026-04-10",
+      "changelog": "Rollout of autonomous planning pipeline and word doc generation engine."
+    }
+  },
+  "connections": ["python", "fastapi", "groq", "python_docx", "pydantic", "agentic_ai"],
+  "spec": {
+    "overview": "An autonomous document-generation agent powered by an structured 4-stage pipeline (Validate -> Plan -> Generate -> Build) that translates natural language prompts into formatted reports.",
+    "architecture": "Utilizes a FastAPI backend running a Python agent loop, relying on Groq LLM API keys for fast planning steps, validated with Pydantic schemas, and outputting via python-docx models.",
+    "subsystems": [
+      {
+        "name": "Validation Guard",
+        "function": "Ensures prompt inputs conform to predefined structural schemas using Pydantic validation rules.",
+        "technologies": ["python", "pydantic"]
+      },
+      {
+        "name": "Planning Node",
+        "function": "Translates the user requirements into sequential execution scripts using Groq LLM API inference.",
+        "technologies": ["groq", "agentic_ai"]
+      },
+      {
+        "name": "Document Compiler",
+        "function": "Compiles raw markdown output fields into styled DOCX document formats.",
+        "technologies": ["python_docx"]
+      }
+    ],
+    "challenges": "Faced inconsistent structure parsing in JSON payloads returned by LLMs, leading to file compiler crashes.",
+    "engineeringDecisions": "Enforced strict JSON mode in LLM configurations, backed by a structured retry loop that feeds back the specific validation errors to the LLM on failures.",
+    "lessonsLearned": "Asynchronous tasks in agentic setups require progress tracking and timeouts to prevent hanging sockets during model outages.",
+    "futureImprovements": "Introduce local Llama-3 parsing support to offer users a fully offline document generation option.",
+    "interviewQuestions": [
+      {
+        "q": "How does your retry logic recovery work when LLM output validation fails?",
+        "a": "When output violates the Pydantic model, a catch block captures the exception, formats the exact error parameters (like missing fields or incorrect types), and appends it to a system role prompt, prompting the LLM to output a corrected payload."
+      }
+    ]
+  },
+  "replay": [
+    {
+      "stage": 1,
+      "title": "FastAPI Architecture Setup",
+      "description": "Constructed async routing layers and integrated Pydantic request body models.",
+      "decisions": "Used FastAPI for fast asynchronous execution cycles suitable for long-running agent threads.",
+      "challenges": "Structuring validation guards without blocking the event loop.",
+      "lessons": "Utilized Python thread pools to process CPU-intensive parsing functions off the async loops.",
+      "technologies": ["python", "fastapi", "pydantic"]
+    },
+    {
+      "stage": 2,
+      "title": "Agentic Pipeline Implementation",
+      "description": "Integrated Groq LLM prompts and mapped planning tasks to tool executors.",
+      "decisions": "Selected Groq for sub-second inference speeds, crucial for real-time multi-agent communications.",
+      "challenges": "Hallucinations in tool routing configurations.",
+      "lessons": "Constrained LLM choices using strict Enum fields in Pydantic definitions.",
+      "technologies": ["groq", "agentic_ai"]
+    },
+    {
+      "stage": 3,
+      "title": "Document Generator Development",
+      "description": "Created style templates mapping markdown lists to native Word paragraphs.",
+      "decisions": "Developed custom XML manipulation utilities to inject page breaks and table properties.",
+      "challenges": "Inconsistent column alignment when translating dynamic JSON data tables into DOCX.",
+      "lessons": "Pre-calculating cell width percentages based on total text lengths ensures robust table grids.",
+      "technologies": ["python_docx"]
+    }
+  ]
+}

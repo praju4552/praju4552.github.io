@@ -1,0 +1,17 @@
+[
+  {
+    "id": "exp_pulsewrite",
+    "company": "PulsewriteX Solutions Pvt. Ltd.",
+    "role": "Full Stack Developer — Intern",
+    "period": "Feb 2026 – Present",
+    "points": [
+      "Sole developer — designed, built, deployed, and maintain a live production platform end-to-end",
+      "Built custom Gerber file viewer rendering PCB designs with 0.1mm dimension accuracy",
+      "Integrated Razorpay payment gateway — UPI, netbanking, cards, account transfer",
+      "Set up and maintained CI/CD pipeline with 100+ production commits across two projects",
+      "Recommended and implemented Hostinger VPS based on 100–200 user load analysis and budget",
+      "Actively monitor error logs, resolve production bugs, maintain server stability"
+    ],
+    "stack": ["react", "typescript", "nodejs", "mysql", "prisma", "razorpay", "google_oauth", "hostinger"]
+  }
+]

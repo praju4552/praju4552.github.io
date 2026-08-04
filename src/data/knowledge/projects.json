@@ -1,0 +1,42 @@
+[
+  {
+    "num": "01",
+    "tag": "AI · Hardware · LLM",
+    "year": "2025–2026",
+    "title": "Omni Room Management System",
+    "desc": "AI-powered smart classroom platform built entirely solo. Custom PTZ hardware — Raspberry Pi 4, Sony IMX sensor, servo motors, 3D printed housing. HOG + CNN face recognition pipeline after benchmarking 5 models. Echo Minds: local Ollama LLM generating summaries, flashcards, and mind maps from class audio.",
+    "stack": ["Python", "React", "Node.js", "MySQL", "OpenCV", "HOG+CNN", "Ollama", "RPi 4"],
+    "link": "https://github.com/praju4552",
+    "featured": true
+  },
+  {
+    "num": "02",
+    "tag": "Full Stack · Live",
+    "year": "2026–Present",
+    "title": "Prototyping Services Platform",
+    "desc": "Production e-commerce platform for PCB manufacturing, 3D printing, laser cutting. Custom Gerber file viewer with 0.1mm accuracy. Razorpay integration. Built, deployed, and maintained solo — 4+ months uptime.",
+    "stack": ["React", "TypeScript", "Node.js", "MySQL", "Razorpay", "Hostinger"],
+    "link": "https://pulsewritexsolutions.com",
+    "featured": false
+  },
+  {
+    "num": "03",
+    "tag": "Agentic AI",
+    "year": "2026",
+    "title": "Fluid AI — Autonomous Agent",
+    "desc": "FastAPI autonomous agent with 4-stage pipeline: validate → plan → generate → build. Accepts natural language, creates its own execution plan, outputs polished Word documents. Retry logic and error recovery built in.",
+    "stack": ["Python", "FastAPI", "Groq LLM", "python-docx", "Pydantic"],
+    "link": "https://github.com/praju4552",
+    "featured": false
+  },
+  {
+    "num": "04",
+    "tag": "Edge ML",
+    "year": "2025",
+    "title": "Predictive Maintenance — IIoT",
+    "desc": "Anomaly detection for motor vibration and temperature sensor data. Full preprocessing pipeline with feature extraction and windowing. Benchmarked classical ML models, achieving 0.88 precision. Edge inference — no cloud dependency.",
+    "stack": ["Python", "Scikit-learn", "Pandas", "Edge ML"],
+    "link": "https://github.com/praju4552",
+    "featured": false
+  }
+]

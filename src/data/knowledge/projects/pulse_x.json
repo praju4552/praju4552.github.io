@@ -1,0 +1,98 @@
+{
+  "id": "pulse_x",
+  "name": "PulseX Prototyping Services",
+  "status": "ONLINE",
+  "activeVersion": "v2.0.0",
+  "versions": {
+    "v1.0.0": {
+      "releaseDate": "2026-02-15",
+      "changelog": "Initial prototype with local Gerber upload parser."
+    },
+    "v2.0.0": {
+      "releaseDate": "2026-06-01",
+      "changelog": "Full production e-commerce release with Razorpay integration and automated PCB dimension verification."
+    }
+  },
+  "connections": ["react", "typescript", "nodejs", "mysql", "razorpay", "hostinger", "prisma", "google_oauth"],
+  "spec": {
+    "overview": "A production-grade e-commerce platform providing PCB prototyping, 3D printing, and laser-cutting services, featuring automated design file verification.",
+    "architecture": "Features a single-page React frontend with custom TypeScript modules, a Node.js REST API using Prisma ORM, and local VPS hosting running automatic git deployments.",
+    "subsystems": [
+      {
+        "id": "pulse_x_frontend",
+        "name": "Frontend Interface",
+        "function": "Dynamic viewport parser and user dashboard.",
+        "technologies": ["react", "typescript"]
+      },
+      {
+        "id": "pulse_x_backend",
+        "name": "Backend REST API",
+        "function": "Handles order validation, user profiles, and vendor communications.",
+        "technologies": ["nodejs"]
+      },
+      {
+        "id": "pulse_x_database",
+        "name": "Database Module",
+        "function": "Saves transactions and customer orders.",
+        "technologies": ["mysql", "prisma"]
+      },
+      {
+        "id": "pulse_x_auth",
+        "name": "Authentication Layer",
+        "function": "Secures dashboard access and API tokens.",
+        "technologies": ["google_oauth"]
+      },
+      {
+        "id": "pulse_x_payment",
+        "name": "Payment Gateway",
+        "function": "Processes payments through Razorpay webhooks securely.",
+        "technologies": ["razorpay"]
+      },
+      {
+        "id": "pulse_x_deploy",
+        "name": "Deployment Stack",
+        "function": "CI/CD server pipeline running git actions.",
+        "technologies": ["hostinger"]
+      }
+    ],
+    "challenges": "Parsing raw Gerber vectors on server introduction RAM spikes.",
+    "engineeringDecisions": "Offloaded computation to client browser canvas, parsing vector profiles in local JavaScript.",
+    "lessonsLearned": "Database transactional locks prevent parallel Razorpay double payments.",
+    "futureImprovements": "Port to Rust WebAssembly module to accelerate heavy multi-layered drawing.",
+    "interviewQuestions": [
+      {
+        "q": "How did you guarantee 0.1mm accuracy in the Gerber parser?",
+        "a": "Parser extracts coordinates scale headers directly from RS-274X files and converts layout grids into absolute pixel drawing offsets."
+      }
+    ]
+  },
+  "replay": [
+    {
+      "stage": 1,
+      "title": "Gerber Math & SVG Engine",
+      "description": "Constructed client-side parser validating circuit board profiles from coordinates.",
+      "decisions": "Rendered SVG nodes directly in React to retain responsive UI zooming and pan capabilities.",
+      "challenges": "Handling custom aperture macros defined inside files.",
+      "lessons": "Apertures must be cached in memory key-value stores before coordinates tracing starts.",
+      "technologies": ["react", "typescript"]
+    },
+    {
+      "stage": 2,
+      "title": "Order State FSM & Transaction Lock",
+      "description": "Designed transaction lock guards preventing concurrent order updates during Razorpay handshakes.",
+      "decisions": "Used MySQL transaction levels (Serializable) to verify state updates.",
+      "challenges": "Deadlocks under parallel user checkouts.",
+      "lessons": "Locking order rows by index instead of full tables avoids deadlock situations.",
+      "technologies": ["nodejs", "mysql", "prisma"]
+    },
+    {
+      "stage": 3,
+      "title": "Continuous Deployment Stack",
+      "description": "Automated pipeline compiling production assets on VPS on git push triggers.",
+      "decisions": "Built lightweight bash actions instead of heavy Docker clusters to suit limited VPS resources.",
+      "challenges": "Server timeouts during webpack asset packaging.",
+      "lessons": "Pre-building files in staging and copying artifacts prevents production downtime.",
+      "technologies": ["hostinger"]
+    }
+  ]
+}

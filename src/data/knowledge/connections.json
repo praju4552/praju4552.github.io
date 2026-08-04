@@ -1,0 +1,34 @@
+[
+  {
+    "source": "central_core",
+    "target": "about_subsystem",
+    "busType": "System-Bus",
+    "bandwidth": "16GB/s",
+    "colorToken": "primaryLine",
+    "dashArray": "4, 4"
+  },
+  {
+    "source": "central_core",
+    "target": "experience_timeline",
+    "busType": "I/O-Bus",
+    "bandwidth": "8GB/s",
+    "colorToken": "primaryLine",
+    "dashArray": "2, 4"
+  },
+  {
+    "source": "central_core",
+    "target": "projects_engine",
+    "busType": "PCIe-Gen4",
+    "bandwidth": "64GB/s",
+    "colorToken": "accentLine",
+    "dashArray": "6, 2"
+  },
+  {
+    "source": "central_core",
+    "target": "skills_matrix",
+    "busType": "Data-Bus",
+    "bandwidth": "32GB/s",
+    "colorToken": "primaryLine",
+    "dashArray": "1, 5"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "num": "01",
+    "cat": "AI / ML",
+    "items": ["Python", "Machine Learning", "Deep Learning", "Computer Vision", "HOG", "CNN", "OpenCV", "DeepFace", "face_recognition"]
+  },
+  {
+    "num": "02",
+    "cat": "Generative AI",
+    "items": ["Ollama LLM", "Groq", "Prompt Engineering", "Few-Shot", "Chain of Thought", "LLM Inference", "Agentic AI", "FastAPI"]
+  },
+  {
+    "num": "03",
+    "cat": "Full Stack",
+    "items": ["React", "TypeScript", "Node.js", "REST APIs", "HTML", "CSS", "Prisma ORM", "Auth"]
+  },
+  {
+    "num": "04",
+    "cat": "Data & DB",
+    "items": ["MySQL", "SQL", "Pandas", "Scikit-learn", "Feature Engineering"]
+  },
+  {
+    "num": "05",
+    "cat": "Hardware",
+    "items": ["Raspberry Pi 4", "Arduino Mega", "Servo Motors", "Sony IMX", "PTZ Assembly", "KiCad", "Embedded C"]
+  },
+  {
+    "num": "06",
+    "cat": "DevOps",
+    "items": ["Git", "GitHub", "CI/CD", "Linux", "Shell Scripting", "Hostinger VPS", "Deployment"]
+  }
+]

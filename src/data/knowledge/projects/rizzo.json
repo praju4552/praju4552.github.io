@@ -1,0 +1,88 @@
+{
+  "id": "rizzo",
+  "name": "Rizzo Automation Suite",
+  "status": "ONLINE",
+  "activeVersion": "v1.0.0",
+  "versions": {
+    "v1.0.0": {
+      "releaseDate": "2025-11-10",
+      "changelog": "Initial model training and local inference pipeline deployment."
+    }
+  },
+  "connections": ["python", "scikit_learn", "pandas", "edge_ml", "react", "fastapi"],
+  "spec": {
+    "overview": "An edge-deployed machine learning system performing real-time anomaly detection and predictive maintenance on motor vibration and temperature sensors.",
+    "architecture": "Utilizes a Python-based preprocessing and feature engineering pipeline, classical ML classifiers trained offline, and lightweight local inference engines deployed without cloud reliance.",
+    "subsystems": [
+      {
+        "id": "rizzo_frontend",
+        "name": "Frontend Dashboard",
+        "function": "Visualizes real-time sensor metrics and alert signals.",
+        "technologies": ["react"]
+      },
+      {
+        "id": "rizzo_backend",
+        "name": "Telemetry API",
+        "function": "Exposes FAST REST endpoints for raw vibration feeds.",
+        "technologies": ["python", "fastapi"]
+      },
+      {
+        "id": "rizzo_database",
+        "name": "Data Engine",
+        "function": "Buffers sensor logs locally in sliding windows.",
+        "technologies": ["pandas"]
+      },
+      {
+        "id": "rizzo_inference",
+        "name": "Inference Core",
+        "function": "Predicts equipment failures with Random Forest classifiers.",
+        "technologies": ["scikit_learn"]
+      },
+      {
+        "id": "rizzo_deploy",
+        "name": "Edge Node",
+        "function": "Local inference loops running offline on target boards.",
+        "technologies": ["edge_ml"]
+      }
+    ],
+    "challenges": "Faced severe memory and processor limits when attempting to compute FFT frequency conversions on local edge microcontrollers.",
+    "engineeringDecisions": "Shifted anomaly features from frequency domains to time domains (root-mean-square and peak-to-peak amplitude metrics), achieving 88% precision with a 90% reduction in CPU cycles.",
+    "lessonsLearned": "Offline model training must replicate the specific coordinate limits and noise characteristics of real-world physical sensors.",
+    "futureImprovements": "Port model weights into C headers using micro-tensor toolkits to support ultra-low-power microcontrollers.",
+    "interviewQuestions": [
+      {
+        "q": "Why did you choose classical ML over Deep Learning (like LSTM) for anomaly detection?",
+        "a": "Deep learning models require high memory capacities and floating-point acceleration. Classical Random Forest models achieved 88% precision while using less than 50KB of memory, which fits directly on edge microcontrollers without network delays."
+      }
+    ]
+  },
+  "replay": [
+    {
+      "stage": 1,
+      "title": "Feature Engineering Core",
+      "description": "Engineered statistical time-domain features (RMS, Peak-to-Peak) from sensor inputs.",
+      "decisions": "Substituted heavy FFT transformations with time-series statistics to fit hardware microcontrollers.",
+      "challenges": "Extremely low processing capabilities of the target board.",
+      "lessons": "Pre-aggregating sensor windows offsets raw parsing latency.",
+      "technologies": ["python", "pandas"]
+    },
+    {
+      "stage": 2,
+      "title": "Model Training & Evaluation",
+      "description": "Trained classical Random Forest estimators, benchmarking against linear SVM models.",
+      "decisions": "Used synthetic oversampling (SMOTE) to balance the minority anomaly class (2% of samples).",
+      "challenges": "Extreme class imbalance led to high false-negative rates initially.",
+      "lessons": "Tuning classification decision thresholds is more critical than maximizing overall accuracy.",
+      "technologies": ["scikit_learn"]
+    },
+    {
+      "stage": 3,
+      "title": "Edge Inference Deployment",
+      "description": "Ported Python model parameters into optimized matrix multiplication steps running directly on the sensor board.",
+      "decisions": "Avoided cloud roundtrips by compiling classification logic to run in local edge loops.",
+      "challenges": "Float division operations caused performance lags on edge hardware.",
+      "lessons": "Scaling weights to integer categories allows microcontrollers to run inference in sub-millisecond ranges.",
+      "technologies": ["edge_ml"]
+    }
+  ]
+}
