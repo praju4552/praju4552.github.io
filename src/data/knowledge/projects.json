@@ -13,14 +13,24 @@
     "num": "02",
     "tag": "Full Stack · Live",
     "year": "2026–Present",
-    "title": "Prototyping Services Platform",
-    "desc": "Production e-commerce platform for PCB manufacturing, 3D printing, laser cutting. Custom Gerber file viewer with 0.1mm accuracy. Razorpay integration. Built, deployed, and maintained solo — 4+ months uptime.",
+    "title": "PulseX Prototyping Services",
+    "desc": "Production e-commerce platform for PCB manufacturing, 3D printing, laser cutting. Custom Gerber file viewer with 0.1mm accuracy. Razorpay integration. Built, deployed, and maintained solo — 9+ months in production.",
     "stack": ["React", "TypeScript", "Node.js", "MySQL", "Razorpay", "Hostinger"],
     "link": "https://pulsewritexsolutions.com",
     "featured": false
   },
   {
     "num": "03",
+    "tag": "Production Systems",
+    "year": "2026–Present",
+    "title": "Rizzo Education",
+    "desc": "Production systems engineering on a live AI education platform. Hardened application security, improved backend reliability, and replaced manual deploys with a gated CI/CD pipeline covering migrations and automated backups.",
+    "stack": ["Node.js", "PostgreSQL", "Prisma", "Linux", "Nginx", "PM2", "GitHub Actions"],
+    "link": "https://github.com/praju4552",
+    "featured": false
+  },
+  {
+    "num": "04",
     "tag": "Agentic AI",
     "year": "2026",
     "title": "Fluid AI — Autonomous Agent",
@@ -30,7 +40,7 @@
     "featured": false
   },
   {
-    "num": "04",
+    "num": "05",
     "tag": "Edge ML",
     "year": "2025",
     "title": "Predictive Maintenance — IIoT",

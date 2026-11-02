@@ -4,6 +4,8 @@ import PROJECTS from "./data/knowledge/projects.json";
 import SKILLS from "./data/knowledge/skills.json";
 import { EngineeringLabShell } from "./components/blueprint/EngineeringLabShell";
 
+const RESUME_URL = `${process.env.PUBLIC_URL}/resume.pdf`;
+
 // ── HOOKS ─────────────────────────────────────────────────────────────────────
 function useInView(threshold = 0.12) {
   const ref = useRef(null);
@@ -117,19 +119,22 @@ function Hero({ onLaunchLab }) {
           <button className="btn btn--primary" onClick={onLaunchLab}>
             View Work →
           </button>
+          <a href={RESUME_URL} download="Prajwal-A-Resume.pdf" className="btn btn--ghost">
+            Resume ↓
+          </a>
           <a href="mailto:prajwalshetty4552@gmail.com" className="btn btn--ghost">
             Get in Touch
           </a>
         </div>
         <div className="hero__metrics">
           <div className="metric">
-            <span className="metric__val">01</span>
-            <span className="metric__key">Live production system</span>
+            <span className="metric__val">02</span>
+            <span className="metric__key">Live production platforms</span>
           </div>
           <div className="metric__line" />
           <div className="metric">
-            <span className="metric__val">4+</span>
-            <span className="metric__key">Months uptime</span>
+            <span className="metric__val">09</span>
+            <span className="metric__key">Months in production</span>
           </div>
           <div className="metric__line" />
           <div className="metric">
@@ -159,9 +164,10 @@ function About() {
             <h2 className="section__title">I think in systems,<br /><em>not just code</em></h2>
             <p className="about__text">
               Recent ECE graduate from Dayananda Sagar University, Bengaluru.
-              During my internship I built a full production platform from scratch —
-              payment gateway, custom PCB file viewer, database, APIs, deployment —
-              and I maintain it today, alone.
+              During my internship I worked across two live production platforms:
+              I built one from scratch — payment gateway, custom PCB file viewer,
+              database, APIs, deployment — and maintain it alone today, and on the
+              second I hardened security, backend reliability, and the release process.
             </p>
             <p className="about__text">
               For my major project I designed and assembled custom PTZ hardware,
@@ -170,6 +176,7 @@ function About() {
               I care about the full system — hardware to frontend — and why every decision was made.
             </p>
             <div className="about__links">
+              <a href={RESUME_URL} download="Prajwal-A-Resume.pdf" className="about__link">Resume ↓</a>
               <a href="https://linkedin.com/in/prajwal4552" target="_blank" rel="noreferrer" className="about__link">LinkedIn ↗</a>
               <a href="https://github.com/praju4552" target="_blank" rel="noreferrer" className="about__link">GitHub ↗</a>
               <a href="https://pulsewritexsolutions.com" target="_blank" rel="noreferrer" className="about__link">Live Site ↗</a>
@@ -246,7 +253,7 @@ function Contact() {
   return (
     <section className="section contact" id="contact" ref={ref}>
       <div className={`reveal ${inView ? "revealed" : ""}`}>
-        <div className="section__label"><span className="mono">04 →</span> Contact</div>
+        <div className="section__label"><span className="mono">02 →</span> Contact</div>
         <h2 className="section__title">Let's build<br /><em>something real</em></h2>
         <p className="contact__sub">
           Actively looking for AI/ML Engineer and Full Stack Developer roles in Bengaluru.
