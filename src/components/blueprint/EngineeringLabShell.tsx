@@ -6,6 +6,7 @@ import rizzoData from '../../data/knowledge/projects/rizzo.json';
 import omniRoomData from '../../data/knowledge/projects/omni_room.json';
 import fluidAIData from '../../data/knowledge/projects/fluid_ai.json';
 import predictiveMaintenanceData from '../../data/knowledge/projects/predictive_maintenance.json';
+import { CircuitTraces, HwSwBridge, ScopeStrip, PyTicker } from './canvas/LabFX';
 
 interface EngineeringLabShellProps {
   onClose: () => void;
@@ -498,6 +499,8 @@ export const EngineeringLabShell: React.FC<EngineeringLabShellProps> = ({ onClos
           <div className="absolute bottom-2 right-3 text-[8px] text-[#00f0ff]/35 font-mono">EXPLODED_LAYERS: STABLE</div>
           
           <div className="flex-1 border border-[#00f0ff]/15 bg-[#020a17]/95 p-4 md:p-5 rounded-sm relative flex flex-col overflow-hidden">
+            {/* Animated PCB trace backdrop */}
+            <CircuitTraces />
             {/* CAD Corner Brackets */}
             <div className="absolute top-0 left-0 w-3.5 h-3.5 border-t-2 border-l-2 border-[#00f0ff]/40 pointer-events-none" />
             <div className="absolute top-0 right-0 w-3.5 h-3.5 border-t-2 border-r-2 border-[#00f0ff]/40 pointer-events-none" />
@@ -515,8 +518,9 @@ export const EngineeringLabShell: React.FC<EngineeringLabShellProps> = ({ onClos
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="h-full flex flex-col justify-start md:justify-center items-center space-y-6 overflow-y-auto py-2 scrollbar-thin"
+                    className="h-full flex flex-col justify-start md:justify-center items-center space-y-5 overflow-y-auto py-2 scrollbar-thin"
                   >
+                    <HwSwBridge />
                     <div className="text-center mb-2">
                       <h3 className="text-xs font-black tracking-widest text-[#00f0ff] uppercase">
                         CHIP_ARRAY: EXPLODED_PROJECTS_REGISTER
@@ -564,6 +568,8 @@ export const EngineeringLabShell: React.FC<EngineeringLabShellProps> = ({ onClos
                         </div>
                       ))}
                     </div>
+
+                    <ScopeStrip />
                   </motion.div>
                 )}
 
@@ -801,6 +807,9 @@ export const EngineeringLabShell: React.FC<EngineeringLabShellProps> = ({ onClos
               </AnimatePresence>
             </div>
           </div>
+
+          {/* Live Python feed from real project code */}
+          <PyTicker />
         </div>
       </div>
     </div>
