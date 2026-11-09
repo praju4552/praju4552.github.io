@@ -341,14 +341,14 @@ export const EngineeringLabShell: React.FC<EngineeringLabShellProps> = ({ onClos
             <div className="text-center space-y-1 pb-3 border-b border-slate-200">
               <h1 className="text-xl font-bold tracking-wide text-slate-950 font-serif">PRAJWAL A</h1>
               <p className="text-[10px] text-slate-600">
-                Bengaluru, Karnataka | +91 74838 10079 | <a href="mailto:prajwalshetty4552@gmail.com" className="text-blue-600 hover:underline">prajwalshetty4552@gmail.com</a>
+                Bengaluru, Karnataka | <a href="mailto:prajwalshetty4552@gmail.com" className="text-blue-600 hover:underline">prajwalshetty4552@gmail.com</a>
               </p>
               <div className="text-[9px] text-slate-500 space-x-2">
                 <a href="https://linkedin.com/in/prajwal4552" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline font-semibold">LinkedIn</a>
                 <span>•</span>
                 <a href="https://github.com/praju4552" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline font-semibold">GitHub</a>
                 <span>•</span>
-                <a href="https://pulsewritexsolutions.com" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline font-semibold">Portfolio</a>
+                <a href="resume/Prajwal_A_Software.pdf" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline font-semibold">PDF</a>
               </div>
             </div>
 
@@ -358,12 +358,9 @@ export const EngineeringLabShell: React.FC<EngineeringLabShellProps> = ({ onClos
                 Professional Summary
               </h2>
               <p className="text-[9.5px] text-slate-700 leading-relaxed mt-1.5 font-sans">
-                Software engineering graduate with hands-on experience building, deploying, and maintaining production software systems 
-                through a 6-month full-stack development internship. Developed and maintained two live production platforms, working across 
-                backend development, database design, API development, deployment, production support, and system improvements. Also built 
-                an AI-enabled capstone project integrating computer vision, embedded systems, and modern web technologies to solve real-world 
-                engineering problems. Interested in building reliable software, understanding system design, and solving practical engineering 
-                problems through continuous learning.
+                ECE graduate (2026) and software developer with production experience: sole developer of a live e-commerce platform and
+                maintainer of a second live platform, covering APIs, databases, payments, CI/CD and production support. Also built an AI
+                capstone combining Raspberry Pi camera hardware, face recognition and an offline LLM assistant.
               </p>
             </div>
 
@@ -394,9 +391,9 @@ export const EngineeringLabShell: React.FC<EngineeringLabShellProps> = ({ onClos
                   </div>
                   <p className="text-slate-600 text-[9px] italic">PulseWriteX Solutions Pvt. Ltd.</p>
                   <ul className="list-disc list-outside pl-4 mt-1 space-y-1 text-slate-700 text-[9px] leading-relaxed">
-                    <li>Developed, deployed, and maintained production software throughout the full development lifecycle, from requirement analysis and backend development to deployment and production support.</li>
-                    <li>Worked across backend development, frontend implementation, database design, API development, and system maintenance while contributing to live production platforms.</li>
-                    <li>Collaborated with stakeholders to translate business requirements into reliable software solutions and continuously improve production systems.</li>
+                    <li>Sole developer of PulseX, a live ordering platform for PCB fabrication, 3D printing and laser cutting that replaced a fully offline process.</li>
+                    <li>Built Node.js/Express REST APIs, a MySQL schema with Prisma, Google OAuth, Razorpay payments and a Gerber viewer with 0.1 mm accuracy.</li>
+                    <li>Hardened Rizzo Education: PM2 cluster behind Nginx, versioned migrations, automated backups, rollback and gated GitHub Actions CI/CD.</li>
                   </ul>
                 </div>
               </div>
