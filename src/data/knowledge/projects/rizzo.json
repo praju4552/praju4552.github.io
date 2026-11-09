@@ -1,88 +1,88 @@
 {
   "id": "rizzo",
-  "name": "Rizzo Automation Suite",
+  "name": "Rizzo Education",
   "status": "ONLINE",
   "activeVersion": "v1.0.0",
   "versions": {
     "v1.0.0": {
-      "releaseDate": "2025-11-10",
-      "changelog": "Initial model training and local inference pipeline deployment."
+      "releaseDate": "2026-09-01",
+      "changelog": "Production hardening release: security remediation, backend reliability work, and a gated CI/CD pipeline with migrations and automated backups."
     }
   },
-  "connections": ["python", "scikit_learn", "pandas", "edge_ml", "react", "fastapi"],
+  "connections": ["nodejs", "prisma", "sql", "linux", "ci_cd", "deployment", "auth", "git", "github"],
   "spec": {
-    "overview": "An edge-deployed machine learning system performing real-time anomaly detection and predictive maintenance on motor vibration and temperature sensors.",
-    "architecture": "Utilizes a Python-based preprocessing and feature engineering pipeline, classical ML classifiers trained offline, and lightweight local inference engines deployed without cloud reliance.",
+    "overview": "A live AI education platform where the work was production systems engineering: hardening application security, improving backend reliability, and making releases safe.",
+    "architecture": "Node.js services backed by a relational database through Prisma, running on Linux behind a reverse proxy with process supervision, and shipped through a gated GitHub Actions pipeline that runs migrations and takes automated backups before deploy.",
     "subsystems": [
       {
-        "id": "rizzo_frontend",
-        "name": "Frontend Dashboard",
-        "function": "Visualizes real-time sensor metrics and alert signals.",
-        "technologies": ["react"]
+        "id": "rizzo_api",
+        "name": "Application Services",
+        "function": "Node.js backend handling requests, business logic, and production fixes for the live platform.",
+        "technologies": ["nodejs"]
       },
       {
-        "id": "rizzo_backend",
-        "name": "Telemetry API",
-        "function": "Exposes FAST REST endpoints for raw vibration feeds.",
-        "technologies": ["python", "fastapi"]
+        "id": "rizzo_data",
+        "name": "Data Layer",
+        "function": "Relational schema and data access managed through Prisma migrations.",
+        "technologies": ["prisma", "sql"]
       },
       {
-        "id": "rizzo_database",
-        "name": "Data Engine",
-        "function": "Buffers sensor logs locally in sliding windows.",
-        "technologies": ["pandas"]
+        "id": "rizzo_security",
+        "name": "Auth & Access Control",
+        "function": "Secures application endpoints and hardens access paths against production security issues.",
+        "technologies": ["auth"]
       },
       {
-        "id": "rizzo_inference",
-        "name": "Inference Core",
-        "function": "Predicts equipment failures with Random Forest classifiers.",
-        "technologies": ["scikit_learn"]
+        "id": "rizzo_runtime",
+        "name": "Linux Runtime",
+        "function": "Server, reverse proxy, and process supervision keeping the platform available.",
+        "technologies": ["linux"]
       },
       {
-        "id": "rizzo_deploy",
-        "name": "Edge Node",
-        "function": "Local inference loops running offline on target boards.",
-        "technologies": ["edge_ml"]
+        "id": "rizzo_release",
+        "name": "Release Pipeline",
+        "function": "Gated CI/CD workflow with migrations, automated backups, and a rollback path.",
+        "technologies": ["ci_cd", "deployment", "git", "github"]
       }
     ],
-    "challenges": "Faced severe memory and processor limits when attempting to compute FFT frequency conversions on local edge microcontrollers.",
-    "engineeringDecisions": "Shifted anomaly features from frequency domains to time domains (root-mean-square and peak-to-peak amplitude metrics), achieving 88% precision with a 90% reduction in CPU cycles.",
-    "lessonsLearned": "Offline model training must replicate the specific coordinate limits and noise characteristics of real-world physical sensors.",
-    "futureImprovements": "Port model weights into C headers using micro-tensor toolkits to support ultra-low-power microcontrollers.",
+    "challenges": "Fixing security and reliability issues on a live platform without interrupting the users already on it.",
+    "engineeringDecisions": "Rebuilt the release process around a gated pipeline: review, database migrations, an automated backup before schema changes, and supervised restarts with a defined rollback path.",
+    "lessonsLearned": "Most production incidents trace back to gaps in the release process rather than to application logic, so the pipeline deserves the same care as the code.",
+    "futureImprovements": "Run scheduled restore drills so backups are proven recoverable instead of assumed.",
     "interviewQuestions": [
       {
-        "q": "Why did you choose classical ML over Deep Learning (like LSTM) for anomaly detection?",
-        "a": "Deep learning models require high memory capacities and floating-point acceleration. Classical Random Forest models achieved 88% precision while using less than 50KB of memory, which fits directly on edge microcontrollers without network delays."
+        "q": "How did you make releases safe on a live system you had inherited?",
+        "a": "I replaced ad-hoc deploys with a gated GitHub Actions pipeline: changes pass review first, Prisma migrations run in order, an automated database backup is taken before any schema change, and services restart under process supervision behind the reverse proxy with a documented rollback path."
       }
     ]
   },
   "replay": [
     {
       "stage": 1,
-      "title": "Feature Engineering Core",
-      "description": "Engineered statistical time-domain features (RMS, Peak-to-Peak) from sensor inputs.",
-      "decisions": "Substituted heavy FFT transformations with time-series statistics to fit hardware microcontrollers.",
-      "challenges": "Extremely low processing capabilities of the target board.",
-      "lessons": "Pre-aggregating sensor windows offsets raw parsing latency.",
-      "technologies": ["python", "pandas"]
+      "title": "Security Hardening Pass",
+      "description": "Audited the live application surface and closed the security gaps that were reachable in production.",
+      "decisions": "Fixed access-control and input-handling issues at the service layer instead of patching them per route.",
+      "challenges": "Had to remediate a running platform with real users and existing sessions.",
+      "lessons": "Security fixes need a staged rollout path, otherwise the fix becomes the outage.",
+      "technologies": ["nodejs", "auth"]
     },
     {
       "stage": 2,
-      "title": "Model Training & Evaluation",
-      "description": "Trained classical Random Forest estimators, benchmarking against linear SVM models.",
-      "decisions": "Used synthetic oversampling (SMOTE) to balance the minority anomaly class (2% of samples).",
-      "challenges": "Extreme class imbalance led to high false-negative rates initially.",
-      "lessons": "Tuning classification decision thresholds is more critical than maximizing overall accuracy.",
-      "technologies": ["scikit_learn"]
+      "title": "Backend Reliability & Workflow Redesign",
+      "description": "Stabilised backend behaviour and redesigned the workflows behind the critical platform paths.",
+      "decisions": "Treated recurring failures as design problems, not one-off bugs, and restructured the affected workflows.",
+      "challenges": "Reproducing production-only failures from logs without a staging replica.",
+      "lessons": "Error logs plus a clear mental model of the workflow beat guesswork every time.",
+      "technologies": ["nodejs", "prisma", "sql"]
     },
     {
       "stage": 3,
-      "title": "Edge Inference Deployment",
-      "description": "Ported Python model parameters into optimized matrix multiplication steps running directly on the sensor board.",
-      "decisions": "Avoided cloud roundtrips by compiling classification logic to run in local edge loops.",
-      "challenges": "Float division operations caused performance lags on edge hardware.",
-      "lessons": "Scaling weights to integer categories allows microcontrollers to run inference in sub-millisecond ranges.",
-      "technologies": ["edge_ml"]
+      "title": "Gated Release Pipeline",
+      "description": "Replaced manual deploys with a gated CI/CD process covering migrations and backups.",
+      "decisions": "Automated backups before schema changes and kept the pipeline lightweight to suit a single server.",
+      "challenges": "Applying migrations safely to live data while keeping downtime near zero.",
+      "lessons": "A release you can roll back is worth more than a release that is merely fast.",
+      "technologies": ["ci_cd", "deployment", "linux", "git", "github"]
     }
   ]
 }

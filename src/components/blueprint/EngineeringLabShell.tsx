@@ -4,6 +4,8 @@ import { ProjectSchema, SubsystemSchema, ReplayStep } from '../../types/blueprin
 import pulseXData from '../../data/knowledge/projects/pulse_x.json';
 import rizzoData from '../../data/knowledge/projects/rizzo.json';
 import omniRoomData from '../../data/knowledge/projects/omni_room.json';
+import fluidAIData from '../../data/knowledge/projects/fluid_ai.json';
+import predictiveMaintenanceData from '../../data/knowledge/projects/predictive_maintenance.json';
 
 interface EngineeringLabShellProps {
   onClose: () => void;
@@ -140,6 +142,8 @@ export const EngineeringLabShell: React.FC<EngineeringLabShellProps> = ({ onClos
     pulseXData as ProjectSchema,
     rizzoData as ProjectSchema,
     omniRoomData as ProjectSchema,
+    fluidAIData as ProjectSchema,
+    predictiveMaintenanceData as ProjectSchema,
   ];
 
   // Auto-play interval for Replay Console
@@ -348,6 +352,8 @@ export const EngineeringLabShell: React.FC<EngineeringLabShellProps> = ({ onClos
                 <span>•</span>
                 <a href="https://github.com/praju4552" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline font-semibold">GitHub</a>
                 <span>•</span>
+                <a href="https://pulsewritexsolutions.com" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline font-semibold">PulseX</a>
+                <span>•</span>
                 <a href="resume/Prajwal_A_Software.pdf" target="_blank" rel="noreferrer" className="text-blue-600 hover:underline font-semibold">PDF</a>
               </div>
             </div>
@@ -408,7 +414,7 @@ export const EngineeringLabShell: React.FC<EngineeringLabShellProps> = ({ onClos
                 {/* Project 1 */}
                 <div>
                   <div className="flex justify-between items-baseline">
-                    <span className="font-bold text-slate-900">PulseX – Engineering Services Platform</span>
+                    <span className="font-bold text-slate-900">PulseX – Prototyping Services Platform</span>
                   </div>
                   <p className="text-[8px] text-slate-500 font-mono tracking-wide mt-0.5">React • TypeScript • Node.js • Express.js • MySQL • Prisma • Razorpay</p>
                   <ul className="list-disc list-outside pl-4 mt-1 space-y-1 text-[#222] text-[9px] leading-relaxed">
@@ -441,6 +447,30 @@ export const EngineeringLabShell: React.FC<EngineeringLabShellProps> = ({ onClos
                     <li>Designed and developed a smart classroom platform by integrating embedded hardware, computer vision, and web technologies.</li>
                     <li>Engineered a real-time face recognition pipeline using Raspberry Pi, camera modules, and machine learning techniques.</li>
                     <li>Integrated a local LLM-powered learning assistant that transforms classroom audio into summaries and study aids.</li>
+                  </ul>
+                </div>
+
+                {/* Project 4 */}
+                <div>
+                  <div className="flex justify-between items-baseline">
+                    <span className="font-bold text-slate-900">Fluid AI – Autonomous Agent</span>
+                  </div>
+                  <p className="text-[8px] text-slate-500 font-mono tracking-wide mt-0.5">Python • FastAPI • Groq LLM • Pydantic • python-docx</p>
+                  <ul className="list-disc list-outside pl-4 mt-1 space-y-1 text-[#222] text-[9px] leading-relaxed">
+                    <li>Built a four-stage autonomous pipeline (validate, plan, generate, build) that turns a natural-language brief into a formatted Word document.</li>
+                    <li>Enforced Pydantic schema validation with a retry loop that feeds validation errors back to the LLM, plus error recovery for malformed outputs.</li>
+                  </ul>
+                </div>
+
+                {/* Project 5 */}
+                <div>
+                  <div className="flex justify-between items-baseline">
+                    <span className="font-bold text-slate-900">Predictive Maintenance – IIoT</span>
+                  </div>
+                  <p className="text-[8px] text-slate-500 font-mono tracking-wide mt-0.5">Python • Scikit-learn • Pandas • Edge ML</p>
+                  <ul className="list-disc list-outside pl-4 mt-1 space-y-1 text-[#222] text-[9px] leading-relaxed">
+                    <li>Built the preprocessing pipeline (windowing, feature extraction) and benchmarked classical models for motor vibration and temperature anomaly detection, reaching 0.88 precision.</li>
+                    <li>Ran inference locally on edge hardware with no cloud dependency, trading frequency-domain features for time-domain statistics to cut compute.</li>
                   </ul>
                 </div>
               </div>
@@ -478,14 +508,14 @@ export const EngineeringLabShell: React.FC<EngineeringLabShellProps> = ({ onClos
             <div className="flex-1 flex flex-col overflow-hidden">
               <AnimatePresence mode="wait">
                 
-                {/* STATE 1: Root Lab View (PulseX, Rizzo, Omni) */}
+                {/* STATE 1: Root Lab View (all projects) */}
                 {labState === 'LAB_ACTIVE' && (
                   <motion.div
                     key="lab-active"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="h-full flex flex-col justify-center items-center space-y-6"
+                    className="h-full flex flex-col justify-start md:justify-center items-center space-y-6 overflow-y-auto py-2 scrollbar-thin"
                   >
                     <div className="text-center mb-2">
                       <h3 className="text-xs font-black tracking-widest text-[#00f0ff] uppercase">
